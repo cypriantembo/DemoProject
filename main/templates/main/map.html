@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm3hTkzvntpDFQPQl9GEqvJn5PmiuEoO8&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height:550px;
+        width:100%;
+
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+      let map, infoWindow;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: {lat:-15.416667, lng: 28.283333},
+          zoom: 14,
+        });
+        infoWindow = new google.maps.InfoWindow();
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
+              infoWindow.setPosition(pos);
+              infoWindow.setContent("Your current location");
+              infoWindow.open(map);
+              map.setCenter(pos);
+            },
+            () => {
+              handleLocationError(true, infoWindow, map.getCenter());
+            }
+          );
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+        //
+        // google.maps.event.addListener(map, 'click',
+        //     function(event){
+        //        addMarker({coords:event.latLng});
+        //     });
+
+            //Add a marker
+            var markers = [
+                {
+                coords:{lat:-15.416667, lng: 28.283333},
+                iconImage:src='/garbage-truck-icon.png',
+                content:'<p>This is a Place</p>'
+                },
+                {
+                coords:{lat:-15.408930447341685, lng:28.318094428833017},
+                iconImage:src='/garbage-truck-icon.png',
+                content:'<p>Longacres</p>'
+                },
+                {
+                coords:{lat:-15.432346081332733, lng: 28.300928291137705},
+                iconImage:src='/garbage-truck-icon.png',
+                content:'<p>Kabwata</p>'
+                },
+                {
+                coords:{lat:-15.402434830510053, lng: 28.284277137573252},
+                iconImage:src='/garbage-truck-icon.png',
+                content:'<p>Thorn park</p>'
+                },
+                {
+                coords:{lat:-15.42303806237, lng: 28.269256767089853},
+                iconImage:src='/garbage-truck-icon.png',
+                content:'<p>chinika</p>'
+                },
+                {
+                coords:{lat:-15.405814513471034, lng: 28.266012001491003},
+                iconImage:src='/garbage-truck-icon.png',
+                content:'<p>Industrial area</p>'
+                },
+                {
+                coords:{lat:-15.404319624431213, lng: 28.330071566892194},
+                iconImage:src='/garbage-truck-icon.png',
+                content:'<p>kalingalinga</p>'
+                },
+                {
+                coords:{lat:-15.4185516648758, lng: 28.34663688976817},
+                iconImage:src='/garbage-truck-icon.png',
+                content:'<p>Kabulonag</p>'
+                }
+            ];
+
+            for(var i=0; i<markers.length;i++){
+                addMarker(markers[i]);
+            }
+
+        
+
+            function addMarker(props){
+                var marker = new google.maps.Marker({
+                position:props.coords,
+                map:map,
+                //icon:props.iconImage
+
+                });
+
+                if(props.iconImage){
+                    marker.setIcon(props.iconImage)
+                }
+
+                if(props.content){
+                    var infoWindow = new google.maps.InfoWindow({
+                    content:props.content
+                });
+                }
+
+
+                marker.addListener('click', function(){
+                        infoWindow.open(map, marker);
+                    });
+      }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(
+          browserHasGeolocation
+            ? "Error: The Geolocation service failed."
+            : "Error: Your browser doesn't support geolocation."
+        );
+        infoWindow.open(map);
+      }
+    </script>
+  </head>
+  <body>
+    <div style="padding-bottom:5px;">
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+          <a class="navbar-brand" href="/tracking">Track</a>
+          <a href="/login.html" class="btn btn-success ml-auto mr-1" role="button">Logout</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+              <div class="navbar-nav text-right">
+                  <a class="nav-item nav-link" href="transactions">Transactions</a>
+                  <a class="nav-item nav-link" href="profile">Profile</a>
+                  
+              </div>
+          </div>
+      </nav>
+  </div>
+    <div id="map"></div>
+
+<div class="container">
+  <form class="mt-2">
+  
+    <div class="form-row">
+      
+      <div class="form-group d-flex">
+        <label for="inputState">Trucks</label>
+        <select id="inputState" class="form-control">
+          <option selected>Choose driver location...</option>
+          <option>Longacres</option>
+          <option>Thorn park</option>
+          <option>Kabulonag</option>
+          
+        </select>
+
+      </div>
+     
+
+      <div class="form-group col-md-4">
+        <!-- <a href="/geo.html" class="btn btn-primary" role="button">Confirm</a> -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Confirm</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+   
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Transaction</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Transaction Confirmed
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="/tracking" class="btn btn-primary" role="button">Start tracking</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ </body>
+</html>
