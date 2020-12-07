@@ -1,13 +1,23 @@
+
+{% load static %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Map</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main/bootstrap/maps.css' %}" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm3hTkzvntpDFQPQl9GEqvJn5PmiuEoO8&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhssaTCj8_rHtmsdf6BTgG9uTtCm0v1KU&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
+
+    <title>Map</title>
+
     <style type="text/css">
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -154,6 +164,7 @@
     </script>
   </head>
   <body>
+
     <div style="padding-bottom:5px;">
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
           <a class="navbar-brand" href="/tracking">Track</a>
@@ -169,8 +180,43 @@
               </div>
           </div>
       </nav>
-  </div>
-    <div id="map"></div>
+    </div>
+
+
+
+
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="emp-profile">
+            <div id="map"></div>
+        </div>
+      </div>
+      <div class=col-lg-3>
+          <h1>Wanipa</h1>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="container">
   <form class="mt-2">
