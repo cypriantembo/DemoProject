@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Client, Driver, Transactions
-from .forms import PickupForm, CreateUserForm, ClientForm
+from .forms import PickupForm, CreateUserForm, ClientForm, DriverForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -44,19 +44,57 @@ def registerPage(request):
         return redirect('pickup')
     else:
         form = CreateUserForm()
+        client_form = ClientForm()
 
         if request.method == 'POST':
             form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
+
+            client_form = ClientForm(request.POST)
+
+            if form.is_valid() and client_form.is_valid():
+                user = form.save()
+
+                client = client_form.save(commit=False)
+                client.user = user
+                client.save()
+
                 user = form.cleaned_data.get('username')
 
                 messages.success(request, 'Account Created for ' + user)
 
                 return redirect('login')
 
-        context = {'form': form}
+        context = {'form': form, 'client_form': client_form}
         return render(request, 'main/register.html', context)
+
+
+def registerDriverPage(request):
+    if request.user.is_authenticated:
+        return redirect('pickup')
+    else:
+        form = CreateUserForm()
+        driver_form = DriverForm()
+
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+
+            driver_form = DriverForm(request.POST)
+
+            if form.is_valid() and driver_form.is_valid():
+                user = form.save()
+
+                driver = driver_form.save(commit=False)
+                driver.user = user
+                driver.save()
+
+                user = form.cleaned_data.get('username')
+
+                messages.success(request, 'Driver Account Created for ' + user)
+
+                return redirect('login')
+
+        context = {'form': form, 'driver_form': driver_form}
+        return render(request, 'main/driver_register.html', context)
 
 
 @login_required(login_url='login')
@@ -86,7 +124,7 @@ def addpickup(request):
         f = Transactions(city=city, waste_type=waste_type, transaction_type=transaction_type, amount=amount, user=user)
         f.save()
 
-    return redirect('payment')
+    return redirect('maps')
 
     # form = ClientForm(request.POST)
     #
@@ -162,7 +200,27 @@ def transactions(request):
 @login_required(login_url='login')
 def profile(request):
     current_user = request.user
-    print (current_user.id)
+    print(current_user.id)
     clients = Client.objects.get(user_id=current_user.id)
     context = {'clients': clients}
     return render(request, 'main/profile.html', context)
+
+
+@login_required(login_url='login')
+def driver_profile(request):
+    current_user = request.user
+    print(current_user.id)
+    drivers = Driver.objects.get(user_id=current_user.id)
+    context = {'drivers': drivers}
+    return render(request, 'main/driver_profile.html', context)
+
+# from django.shortcuts import render
+
+# def profile(request):
+#     if request.user.is_authenticated():
+#         template= "Blog/logged_in_template.html"
+#     else:
+#         template= "Blog/public_template.html"
+
+#     context= {}
+#     return render (request, template, context)

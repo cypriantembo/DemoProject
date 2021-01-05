@@ -39,9 +39,12 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        <p>{{request.user}}</p>
+                                        <p>{{drivers.company}}</p>
                                     </h5>
-
+                                    <h6>
+                                        <p>{{request.user}}</p>
+                                    </h6>
+                                    <p class="proile-rating">Rating : <span>5</span></p>
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -53,10 +56,10 @@
                     <div class="col-md-4" style="border-right: 2px dashed #007bff;">
                         <div class="profile-work">
                             <p><h6>Personal Info</h6></p>
-                            <p><strong>City: {{clients.city}}</strong></p>
-                            <p><strong>Area: {{clients.area}}</strong></p>
-                            <p><strong>Road: {{clients.road}}</strong></p>
-                            <p><strong>Location Coordinates: {{clients.location_coords}}</strong></p>
+                            <p><strong>City: {{drivers.city}}</strong></p>
+                            <p><strong>Area: {{drivers.area}}</strong></p>
+                            <p><strong>Road: {{drivers.road}}</strong></p>
+                            <p><strong>Location Coordinates: {{drivers.location_coords}}</strong></p>
                         </div>
                     </div>
 
@@ -92,7 +95,7 @@
                                                 <label>Phone</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{clients.contact}}</p>
+                                                <p>{{drivers.contact}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -101,7 +104,7 @@
                                             </div>
                                             <div class="col-md-6">
 
-                                                <p>{{clients.city}}</p>
+                                                <p>{{drivers.city}}</p>
 
                                             </div>
                                         </div>

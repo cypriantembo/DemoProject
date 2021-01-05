@@ -1,11 +1,16 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-   
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Document</title>
 
     
@@ -104,7 +109,9 @@
                                     </div>
                                     <div class="card-footer"> 
                                         <!-- <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button> -->
-                                        <a href="/pickup" class="btn btn-primary btn-block shadow-sm" role="button">Submit</a>
+                                        <!-- <a href="/pickup" class="btn btn-primary btn-block shadow-sm" role="button">Submit</a> -->
+                                        <button type="button" class="btn btn-primary btn-block shadow-sm" data-toggle="modal" data-target="#exampleModal">Submit</button>
+
 
                                     </form>
                             </div>
@@ -142,8 +149,10 @@
                                 <!-- <p> <button type="button" class="btn btn-primary "><i class="fas fa-mobile-alt mr-2"></i> Proceed Pyment</button> </p> -->
                                 <a href="/pickup" class="btn btn-primary btn-block shadow-sm" role="button">Submit</a>
 
+
                             </div>
                             <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
+
                         </div> <!-- End -->
                         <!-- End -->
                     </div>
@@ -160,6 +169,60 @@
                 $('[data-toggle="tooltip"]').tooltip()
                 })
             </script> -->
+
+
+            <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Payment Method</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span><h6>Press Confirm Payment to Proceed</h6></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <!-- <a href="/tracking" class="btn btn-primary" role="button">Start tracking</a> -->
+          <a href="/pickup" class="btn btn-primary" role="button">Confirm Payment</a>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">Submit p</button>
+
+
+  
+  
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+              <!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Payment Method</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span><h6>Payment Confirmed</h6></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <!-- <a href="/tracking" class="btn btn-primary" role="button">Start tracking</a> -->
+          <a href="/pickup" class="btn btn-primary btn-block shadow-sm" role="button">Confirm Payment</a>
+
+  
+  
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

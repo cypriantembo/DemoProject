@@ -81,7 +81,8 @@
             var markers = [
                 {
                 coords:{lat:-15.416667, lng: 28.283333},
-                iconImage:src='/garbage-truck-icon.png',
+                // iconImage:src='/garbage-truck-icon.png',
+                iconImage:src= "{% static 'main/bootstrap/images/garbage-truck-icon.png' %}",
                 content:'<p>This is a Place</p>'
                 },
                 {
@@ -191,60 +192,31 @@
             <div id="map"></div>
         </div>
       </div>
-      <div class=col-lg-3>
-          <h1>Wanipa</h1>
-      </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-  <form class="mt-2">
+      <div class=col-sm-3>
+          <form class="mt-2">
   
-    <div class="form-row">
-      
-      <div class="form-group d-flex">
-        <label for="inputState">Trucks</label>
-        <select id="inputState" class="form-control">
-          <option selected>Choose driver location...</option>
-          <option>Longacres</option>
-          <option>Thorn park</option>
-          <option>Kabulonag</option>
-          
-        </select>
-
-      </div>
-     
-
-      <div class="form-group col-md-4">
-        <!-- <a href="/geo.html" class="btn btn-primary" role="button">Confirm</a> -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Confirm</button>
+            <div class="form-row">
+              
+              <div class="form-group d-flex">
+                <select id="inputState" class="form-control">
+                  <option selected><strong>Choose driver location...</strong></option>
+                  <option>Longacres</option>
+                  <option>Thorn park</option>
+                  <option>Kabulonag</option>
+                  
+                </select>
+        
+              </div>
+             
+        
+              <div class="form-group col-md-4">
+                <!-- <a href="/geo.html" class="btn btn-primary" role="button">Confirm</a> -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Confirm</button>
+              </div>
+            </div>
+          </form>
       </div>
     </div>
-  </form>
-
-</div>
-   
 
 
 
@@ -259,11 +231,12 @@
         </button>
       </div>
       <div class="modal-body">
-        Transaction Confirmed
+        Pickup Confirmed to Proceed to Payment
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a href="/tracking" class="btn btn-primary" role="button">Start tracking</a>
+        <a href="/payment" class="btn btn-primary btn-block shadow-sm" role="button">Confirm</a>
+
 
       </div>
     </div>

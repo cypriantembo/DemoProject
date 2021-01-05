@@ -1,111 +1,5 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-   <style>
-        .center {
-        margin: auto;
-        width: 60%;
-        padding: 10px;
-      }
-   </style>
-    <title>Register</title>
-</head>
-<body>
-
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
-        <a class="navbar-brand">Register</a>
-        <a href="{% url 'login' %}" class="btn btn-success ml-auto mr-1" role="button">Login</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
-            <div class="navbar-nav text-right">
-                <a class="nav-item nav-link disabled" href="#">Features</a>
-                <a class="nav-item nav-link disabled" href="#">Pricing</a>
-                <a class="nav-item nav-link disabled" href="#">Register</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="center">
-    <form method="POST">
-        {% csrf_token %}
-
-        {% for field in form %}-->
-<!--            {{field.label}}-->
-<!--            {{field}}-->
-<!--        {% endfor %}-->
-      <!-- <div class="form-group">
-        {{form.username.label}}
-        {{form.username}}
-      </div>
-
-          <div class="form-group">
-            {{form.cell.label}}
-            {{form.cell}}
-        </div>
-
-      <div class="form-group">
-        {{form.email.label}}
-        {{form.email}}
-      </div>
-
-        <div class="form-group">
-         {{form.password1.label}}
-        {{form.password1}}
-        </div>
-
-        <div class="form-group">
-            {{form.password2.label}}
-            {{form.password2}}
-        </div>
-
-        <div class="form-group">
-            {{form.first_name.label}}
-            {{form.first_name}}
-        </div>
-
-        <div class="form-group">
-            {{form.last_name.label}}
-            {{form.last_name}}
-        </div>
-
-
-         <button type="submit" class="btn btn-primary">Register</button> -->
-<!--        <a href="/payment" class="btn btn-primary" role="button">Submit</a>-->
-
-
-
-
-
-<!-- 
-    </form>
-        {{ form.errors}}
-    </div>
-
-<script>
-    var form_fields = document.getElementByTagName('input')
-    form_fields[1].placeholder='Username';
-    form_fields[2].placeholder='Email..';
-    form_fields[3].placeholder='Enter Password';
-    form_fields[4].placeholder='Confirm Password';
-
-    for (var field in form_fields){
-    form_fields[field].className += ' form-control'
-    }
-
-</script>
-</body>
-</html> --> 
-
-
-
-
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,13 +12,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'main/bootstrap/profile.css' %}" />
 
-    <title>Document</title>
+    <title>driver_register</title>
 </head>
 <body>
 
 <div style="padding-bottom:5px;">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
-        <a class="navbar-brand">Register</a>
+        <a class="navbar-brand">Driver Register</a>
         <a href="{% url 'login' %}" class="btn btn-success ml-auto mr-1" role="button">Login</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
@@ -143,8 +37,8 @@
     <div class="container col-sm-6">
         <div class="center">
             <form method="POST">
-                {% csrf_token %}
-        
+                    {% csrf_token %}
+
         <!--        {% for field in form %}-->
         <!--            {{field.label}}-->
         <!--            {{field}}-->
@@ -153,56 +47,61 @@
                 {{form.username.label}}
                 {{form.username}}
               </div>
-        
+
                   <div class="form-group">
                     {{form.cell.label}}
                     {{form.cell}}
                 </div>
-        
+
               <div class="form-group">
                 {{form.email.label}}
                 {{form.email}}
               </div>
-        
+
                 <div class="form-group">
                  {{form.password1.label}}
                 {{form.password1}}
                 </div>
-        
+
                 <div class="form-group">
                     {{form.password2.label}}
                     {{form.password2}}
                 </div>
-        
+
                 <div class="form-group">
                     {{form.first_name.label}}
                     {{form.first_name}}
                 </div>
-        
+
                 <div class="form-group">
                     {{form.last_name.label}}
                     {{form.last_name}}
                 </div>
 
+                  <div class="form-group">
+                    {{driver_form.company.label}}
+                    {{driver_form.company}}
+                </div>
+
                 <div class="form-group">
-                    {{client_form.city.label}}
-                    {{client_form.city}}
+                    {{driver_form.city.label}}
+                    {{driver_form.city}}
                 </div>
                  <div class="form-group">
-                    {{client_form.area.label}}
-                    {{client_form.area}}
+                    {{driver_form.area.label}}
+                    {{driver_form.area}}
                 </div>
                  <div class="form-group">
-                    {{client_form.road.label}}
-                    {{client_form.road}}
+                    {{driver_form.road.label}}
+                    {{driver_form.road}}
                 </div>
                  <div class="form-group">
-                    {{client_form.contact.label}}
-                    {{client_form.contact}}
+                    {{driver_form.contact.label}}
+                    {{driver_form.contact}}
                 </div>
                  <div class="form-group">
-                    {{client_form.location_coords.label}}
-                    {{client_form.location_coords}}
+                    {{driver_form.location_coords.label}}
+                    {{driver_form.location_coords}}
                 </div>
 
 <!--                 <div class="form-group">-->

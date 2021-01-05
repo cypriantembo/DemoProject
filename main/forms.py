@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Client, Driver
 
 CITIES = [('Lusaka', 'Lusaka'),
           ('Ndola', 'Ndola'),
@@ -11,15 +12,53 @@ WASTE_TYPE = [('Plastic', 'Plastic'), ('Metal', 'Metal'), ('Glass', 'Glass'),
 PAYMENT_METHOD = [('Bank', 'Bank'), ('Mtn money', 'Mtn Money'), ('Airtel money', 'Airtel Money')]
 
 
-class ClientForm(forms.Form):
-    first_name = forms.CharField(max_length=50, widget=forms.TextInput(
+# class ClientForm(forms.Form):
+#     city = forms.CharField(max_length=50, widget=forms.TextInput(
+#         attrs={'class': 'form-control', }))
+#     area = forms.CharField(max_length=50, widget=forms.TextInput(
+#         attrs={'class': 'form-control', }))
+#     road = forms.CharField(max_length=50, widget=forms.TextInput(
+#         attrs={'class': 'form-control', }))
+#     contact = forms.CharField(max_length=50, widget=forms.TextInput(
+#         attrs={'class': 'form-control', }))
+#     location = forms.CharField(max_length=50, widget=forms.TextInput(
+#         attrs={'class': 'form-control', }))
+
+
+class ClientForm(forms.ModelForm):
+    city = forms.CharField(max_length=50, widget=forms.TextInput(
         attrs={'class': 'form-control', }))
-    last_name = forms.CharField(max_length=50, widget=forms.TextInput(
+    area = forms.CharField(max_length=50, widget=forms.TextInput(
         attrs={'class': 'form-control', }))
-    cell = forms.CharField(max_length=50, widget=forms.TextInput(
+    road = forms.CharField(max_length=50, widget=forms.TextInput(
         attrs={'class': 'form-control', }))
-    location = forms.CharField(max_length=50, widget=forms.TextInput(
+    contact = forms.CharField(max_length=50, widget=forms.TextInput(
         attrs={'class': 'form-control', }))
+    location_coords = forms.CharField(max_length=50, widget=forms.TextInput(
+        attrs={'class': 'form-control', }))
+
+    class Meta:
+        model = Client
+        fields = ('city', 'area', 'road', 'contact', 'location_coords')
+
+
+class DriverForm(forms.ModelForm):
+    company = forms.CharField(max_length=50, widget=forms.TextInput(
+        attrs={'class': 'form-control', }))
+    city = forms.CharField(max_length=50, widget=forms.TextInput(
+        attrs={'class': 'form-control', }))
+    area = forms.CharField(max_length=50, widget=forms.TextInput(
+        attrs={'class': 'form-control', }))
+    road = forms.CharField(max_length=50, widget=forms.TextInput(
+        attrs={'class': 'form-control', }))
+    contact = forms.CharField(max_length=50, widget=forms.TextInput(
+        attrs={'class': 'form-control', }))
+    location_coords = forms.CharField(max_length=50, widget=forms.TextInput(
+        attrs={'class': 'form-control', }))
+
+    class Meta:
+        model = Driver
+        fields = ('company', 'city', 'area', 'road', 'contact', 'location_coords')
 
 
 class PickupForm(forms.Form):
@@ -51,6 +90,7 @@ class CreateUserForm(UserCreationForm):
         model = User
         # fields = ['username', 'email', 'password1', 'password2']
         fields = UserCreationForm.Meta.fields + ('username', 'email', 'password1', 'password2', 'first_name', 'last_name')
+
 
 
 #
