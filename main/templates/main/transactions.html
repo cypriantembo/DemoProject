@@ -34,12 +34,12 @@
 
 <div class="container emp-profile">
     <div class="col-sm-12 d-flex p-1">
-      {% for transaction in transaction_list %}
+      {% for t in transaction_list %}
         <div class="alert alert-heading mr-2 col-sm-3" role="alert">
-            <h4 class="alert-heading">E-Waste Pickup</h4>
-            <p>Date: {{ transaction.transacted_at}}</p>
-            <p>Driver: {{transaction.driver.first_name}}</p>
-            <p>Price: {{transaction.amount}}</p>
+            <h4 class="alert-heading">{{t.waste_type}} Pickup</h4>
+            <p>Date: {{t.transacted_at}}</p>
+            <p>City: {{t.city}}</p>
+            <p>Price: {{t.amount}}</p>
             <hr>
             <p class="mb-0">Status: {{transaction.transaction_state}}</p>
         </div>
@@ -49,79 +49,3 @@
 
 </body>
 </html>
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Transactions</title>
-
-  
-</script>
-</head>
-<body>
-
-  <div style="padding-bottom:5px;">
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
-        <a class="navbar-brand" href="/pickup">Home</a>
-        <a href="{% url 'logout' %}" class="btn btn-success ml-auto mr-1" role="button">Logout</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
-            <div class="navbar-nav text-right">
-                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-                <a class="nav-item nav-link" href="{% url 'tracking' %}">Tracking</a>
-
-            </div>
-        </div>
-    </nav>
-</div> -->
-
-  
-  <!-- Modal -->
-  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Customer Name</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Type of waste: E-Waste</p>
-          <p>Weight(kg): 200</p>
-          <p>Price(ZMK): 500</p>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Deny</button>
-          <a href="driver_route" class="btn btn-primary" role="button">Proceed</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-    
-  <div class="col-sm-12 d-flex p-1">
-      {% for transaction in transaction_list %}
-        <div class="alert alert-success mr-2 col-sm-3" role="alert">
-            <h4 class="alert-heading">E-Waste Pickup</h4>
-            <p>Date: {{ transaction.transacted_at}}</p>
-            <p>Driver: {{transaction.driver.first_name}}</p>
-            <p>Price: {{transaction.amount}}</p>
-            <hr>
-            <p class="mb-0">Status: {{transaction.transaction_state}}</p>
-        </div>
-      {% endfor %}
-  </div>
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-</body>
-</html> -->

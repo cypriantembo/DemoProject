@@ -192,7 +192,9 @@ def tracking(request):
 
 @login_required(login_url='login')
 def transactions(request):
-    transaction_list = Transactions.objects.order_by('transacted_at')
+    current_user = request.user
+    # queryset
+    transaction_list = Transactions.objects.filter(user_id=current_user.id)
     context = {'transaction_list': transaction_list}
     return render(request, 'main/transactions.html', context)
 
