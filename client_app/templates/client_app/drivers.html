@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <link rel="stylesheet" href="{% static 'client_app/bootstrap/profile.css' %}" />
+
+     <link rel="stylesheet" href="{% static 'client_app/bootstrap/drivers.css' %}" />
+       <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400');
+    </style>
+
+
+
+    <title>driver_register</title>
+</head>
+<body>
+
+<div style="padding-bottom:5px;">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+        <a class="navbar-brand" href="/home">Home</a>
+        <a href="{% url 'logout' %}" class="btn btn-success ml-auto mr-1" role="button">Logout</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+            <div class="navbar-nav text-right">
+                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                <a class="nav-item nav-link" href="{% url 'transactions' %}">Transactions</a>
+                <a class="nav-item nav-link" href="{% url 'pickup' %}">Pickup</a>
+                <a class="nav-item nav-link" href="{% url 'payment' %}">Payment</a>
+                <a class="nav-item nav-link" href="/drivers">Drivers</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class="container emp-profile">
+    <div class="container col-sm-6">
+
+<h1> This should display a list of drivers</h1>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>

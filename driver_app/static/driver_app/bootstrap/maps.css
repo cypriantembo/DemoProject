@@ -1,0 +1,10 @@
+body{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+.emp-profile{
+    padding: 5px;
+    margin: 3px;
+    border-radius: 0.5rem;
+    background: #fff;
+    /* max-width: 1000px; */
+}
